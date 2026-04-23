@@ -1,5 +1,6 @@
 package com.infra.second;
 
+import com.infra.second.grok.GrokChatModel;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.google.genai.GoogleGenAiChatModel;
 import org.springframework.ai.openai.OpenAiChatModel;
@@ -17,5 +18,10 @@ public class ChatClientConfig {
     @Bean(name = "geminiChatClient")
     ChatClient geminiChatClient(GoogleGenAiChatModel googleGenAiChatModel) {
         return ChatClient.create(googleGenAiChatModel);
+    }
+
+    @Bean(name = "grokChatClient")
+    ChatClient grokChatClient(GrokChatModel grokChatModel) {
+        return ChatClient.create(grokChatModel);
     }
 }

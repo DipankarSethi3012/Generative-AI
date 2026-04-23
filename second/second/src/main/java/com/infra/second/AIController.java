@@ -12,10 +12,12 @@ public class AIController {
 
     private final ChatClient openAIChatCLient;
     private final ChatClient geminiChatClient;
+    private final ChatClient grokChatClient;
 
-    public AIController(ChatClient openAIChatCLient, ChatClient geminiChatClient) {
+    public AIController(ChatClient openAIChatCLient, ChatClient geminiChatClient, ChatClient grokChatClient) {
         this.openAIChatCLient = openAIChatCLient;
         this.geminiChatClient = geminiChatClient;
+        this.grokChatClient = grokChatClient;
     }
 
     @GetMapping("/openai/chat")
@@ -27,4 +29,12 @@ public class AIController {
     public String geminiAIChat(@RequestParam String msg) {
         return geminiChatClient.prompt(msg).call().content();
     }
+
+    @GetMapping("/grok/chat")
+    public String grokAIChat(@RequestParam String msg) {
+        return grokChatClient.prompt(msg).call().content();
+    }
+
 }
+
+//we are using two ai models
