@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: chatoptions
+
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: ${OPEN_AI_MODEL:gpt-5.4-nano}
+
+logging:
+  level:
+    org:
+      springframework:
+        ai:
+          chat:
+            client:
+              advisor: DEBUG
